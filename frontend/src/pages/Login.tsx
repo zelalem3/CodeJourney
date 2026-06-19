@@ -1,13 +1,29 @@
 import { useState } from "react";
+import api from '../api/axios';
+
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleFormSubmit(e) {
+  async function handleFormSubmit(e) {
+
+
     e.preventDefault();
+    try{
+    const response = await api.post("/auth/login",{
+      email,
+      password
+
+    })
+    console.log("login successful", response.data)
+  }
+  catch(error)
+  {
+    console.log(error);
+  }
     // Example:
-    console.log("Login:", { username, password });
+    console.log("Login:", { email, password });
   }
 
   return (
@@ -15,8 +31,8 @@ const Login = () => {
       <div>
         <input
           type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={email}
+          onChange={(e) => setemail(e.target.value)}
           placeholder="Set username"
         />
       </div>
