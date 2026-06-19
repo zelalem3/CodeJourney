@@ -1,39 +1,50 @@
 import { useState } from "react";
 import api from '../api/axios';
-
+// 1. Import your Zustand store hook
+import { useAuthStore } from '../store/authStore'; 
 
 const Login = () => {
   const [email, setemail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleFormSubmit(e) {
 
+  const loginAction = useAuthStore((state) => state.login);
 
+  async function handleFormSubmit(e: React.FormEvent) {
     e.preventDefault();
-    try{
-    const response = await api.post("/auth/login",{
-      email,
-      password
+    try {
+      const response = await api.post("/auth/login", {
+        email,
+        password
+      });
+      
+      console.log("login successful", response.data);
 
-    })
-    console.log("login successful", response.data)
-  }
-  catch(error)
-  {
-    console.log(error);
-  }
-    // Example:
-    console.log("Login:", { email, password });
+      
+      const { user, token } = response.data;
+
+      
+      loginAction(user, token);
+
+    } catch (error: any) {
+      if (error.response && error.response.status === 422) {
+          console.error("Laravel Validation Error Details:", error.response.data.errors);
+          alert(Object.values(error.response.data.errors).flat().join("\n"));
+      } else {
+          console.error("Generic Login Failure:", error);
+      }
+    }
   }
 
   return (
     <form onSubmit={handleFormSubmit}>
       <div>
         <input
-          type="text"
+          type="email" 
           value={email}
           onChange={(e) => setemail(e.target.value)}
-          placeholder="Set username"
+          placeholder="Enter email"
+          required
         />
       </div>
 
@@ -42,7 +53,8 @@ const Login = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Set password"
+          placeholder="Enter password"
+          required
         />
       </div>
 

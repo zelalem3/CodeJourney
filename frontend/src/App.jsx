@@ -5,12 +5,18 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import api from './api/AuthApi';
+import Navbar from './components/Navbar';
+
+
 
 function App() {
 
+ 
 
   return (
     <>
+    <Navbar />
     <Login />
     <Register />
      
