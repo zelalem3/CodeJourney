@@ -22,5 +22,11 @@ Route::prefix('auth')->group(function () {
 // 2. Core Application Routes (Prefix: /api/*)
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::post('/user/connect-leetcode', [LeetCodeController::class, 'connect']);
+
+    
+    // --- LEETCODE ROUTES ---
+    Route::get('/leaderboard', [\App\Http\Controllers\LeaderboardController::class, 'index']);
+    Route::post('/user/connect-leetcode', [LeetCodeController::class, 'connect']); 
+    Route::get('/user/leetcode-calendar', [LeetCodeController::class, 'getCalendar']);
+    Route::get('/user/leetcode-performance', [LeetCodeController::class, 'getPerformance']);
 });

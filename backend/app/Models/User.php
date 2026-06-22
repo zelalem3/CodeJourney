@@ -9,8 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasApiTokens; // <--- 2. USE THE TRAIT HERE
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -18,16 +17,18 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-    'name',
-    'email',
-    'password',
-    'leetcode_username',
-    'total_solved',
-    'easy_solved',
-    'medium_solved',
-    'hard_solved',
-    'acceptance_rate',
-];
+        'name',
+        'email',
+        'password',
+        'leetcode_username',
+        'total_solved',
+        'easy_solved',
+        'medium_solved',
+        'hard_solved',
+        'acceptance_rate',
+        'leetcode_calendar',    // Added missing column tracking
+        'leetcode_performance', // Added missing column tracking
+    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,7 +46,11 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    'email_verified_at' => 'datetime',
+    'password' => 'hashed',
+    
+    
+    'leetcode_calendar' => 'json',
+    'leetcode_performance' => 'json',
+];
 }

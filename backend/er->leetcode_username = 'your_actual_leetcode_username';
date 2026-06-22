@@ -1,0 +1,18 @@
+[90m= [39m[34;4mApp\Models\User[39;24m {#8109
+    [34mid[39m: [35m1[39m,
+    [34mname[39m: [32m"[39m[32mzelalem[39m[32m"[39m,
+    [34memail[39m: [32m"[39m[32mzelalem@gmail.com[39m[32m"[39m,
+    [34memail_verified_at[39m: [36mnull[39m,
+    #[33mpassword[39m: [32m"[39m\$[32m2y[39m\$[32m12[39m\$[32mEgnX6fRwqdZ.q9jwXIAgqenkD88UrqdCd5tuujmi.mPM14Jt7RyrK[39m[32m"[39m,
+    #[33mremember_token[39m: [36mnull[39m,
+    [34mcreated_at[39m: [32m"[39m[32m2026-06-20 05:56:17[39m[32m"[39m,
+    [34mupdated_at[39m: [32m"[39m[32m2026-06-20 07:27:31[39m[32m"[39m,
+    [34mleetcode_username[39m: [32m"[39m[32mzgzi57exdZ[39m[32m"[39m,
+    [34mtotal_solved[39m: [35m0[39m,
+    [34measy_solved[39m: [35m0[39m,
+    [34mmedium_solved[39m: [35m0[39m,
+    [34mhard_solved[39m: [35m0[39m,
+    [34macceptance_rate[39m: [35m0.0[39m,
+    [34mleetcode_calendar[39m: [36mnull[39m,
+    [34mleetcode_performance[39m: [32m"[39m[32m{[39m\"[32muserContestRanking[39m\"[32m:null,[39m\"[32muserContestRankingHistory[39m\"[32m:[]}[39m[32m"[39m,
+  }
